@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>meri jaan meri motuuu  ❤️</title>
+
+<style>
+body{
+  margin:0;
+  font-family:'Segoe UI',sans-serif;
+  background:linear-gradient(135deg,#ff6fa5,#ff9ec4);
+  color:#fff;
+  text-align:center;
+  overflow:hidden;
+}
+
+/* STEPS */
+.step{
+  min-height:100vh;
+  display:none;
+  padding:40px 20px;
+  box-sizing:border-box;
+  animation:fade 1s ease;
+}
+.step.active{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+}
+@keyframes fade{
+  from{opacity:0;transform:translateY(30px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+button{
+  margin-top:25px;
+  padding:14px 34px;
+  font-size:18px;
+  border:none;
+  border-radius:30px;
+  background:#fff;
+  color:#ff4d8d;
+  cursor:pointer;
+}
+
+/* HEARTS */
+.heart{
+  position:fixed;
+  bottom:-20px;
+  font-size:18px;
+  animation:float 6s linear infinite;
+}
+@keyframes float{
+  from{transform:translateY(0);opacity:1;}
+  to{transform:translateY(-120vh);opacity:0;}
+}
+
+/* PHOTO FLIP */
+.photo-box{
+  width:280px;
+  height:360px;
+  perspective:1000px;
+  margin:20px 0;
+}
+.photo-inner{
+  width:100%;
+  height:100%;
+  position:relative;
+  transition:transform 0.8s;
+  transform-style:preserve-3d;
+}
+.photo-box.show .photo-inner{
+  transform:rotateY(180deg);
+}
+.photo-front,.photo-back{
+  position:absolute;
+  inset:0;
+  backface-visibility:hidden;
+  border-radius:20px;
+  overflow:hidden;
+}
+.photo-front img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.photo-back{
+  background:rgba(255,77,141,0.95);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  font-size:16px;
+  line-height:1.6;
+  transform:rotateY(180deg);
+}
+
+/* NO BUTTON */
+#no{
+  position:absolute;
+  background:#ff2e63;
+  color:white;
+}
+
+/* GIFT */
+#gift{
+  font-size:90px;
+  display:none;
+}
+.open{
+  animation:pop 1s ease;
+}
+@keyframes pop{
+  0%{transform:scale(0.5);}
+  60%{transform:scale(1.2);}
+  100%{transform:scale(1);}
+}
+
+/* FLOWERS */
+.flower{
+  position:fixed;
+  top:-20px;
+  font-size:22px;
+  animation:fall 5s linear infinite;
+}
+@keyframes fall{
+  from{transform:translateY(0);opacity:1;}
+  to{transform:translateY(120vh);opacity:0;}
+}
+
+/* LETTER */
+.letter{
+  background:#fff;
+  color:#000;
+  border-radius:18px;
+  padding:22px;
+  width:300px;
+}
+.letter img{
+  width:100%;
+  border-radius:14px;
+  margin-top:15px;
+}
+
+/* ANGRY JUMP */
+@keyframes jump{
+  0%{transform:translate(-50%,-50%) scale(0.5);}
+  50%{transform:translate(-50%,-60%) scale(1.2);}
+  100%{transform:translate(-50%,-50%) scale(1);}
+}
+</style>
+</head>
+
+<body>
+
+<!-- BACKGROUND MUSIC -->
+<audio id="bgm" loop preload="auto">
+  <source src="https://www.dropbox.com/scl/fi/f902mnbtj2eotpojnseqw/KAUN-TUJHE-KoshalWorld.Com.mp3?raw=1" type="audio/mpeg">
+</audio>
+
+<!-- HEARTBEAT -->
+<audio id="beat" preload="auto">
+  <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_3c77d1f0e3.mp3">
+</audio>
+
+<!-- STEP 1 -->
+<div class="step active">
+  <h2>meri jaan  ❤️</h2>
+  <p>Happy Valentine’s Day</p>
+  <button onclick="startExperience()">Start 🎶</button>
+</div>
+
+<!-- PHOTO 1 -->
+<div class="step">
+  <div class="photo-box" onclick="reveal(this)">
+    <div class="photo-inner">
+      <div class="photo-front">
+        <img src="https://i.postimg.cc/66C7Ysgy/019AABF7_5363_4DF7_9D9F_6DAEDAFAEB12.jpg">
+      </div>
+      <div class="photo-back">
+        Motuuu 💋 meri jaan tu mere liye best h teri jaisi meko or khi nhi sakti babyy❤️
+      </div>
+    </div>
+  </div>
+  <button onclick="next()">Next</button>
+</div>
+
+<!-- PHOTO 2 -->
+<div class="step">
+  <div class="photo-box" onclick="reveal(this)">
+    <div class="photo-inner">
+      <div class="photo-front">
+        <img src="https://i.postimg.cc/ncZXWRf1/4157BC28_9F98_4E01_8092_2929EF84FBC2.jpg">
+      </div>
+      <div class="photo-back">
+        babyyyy yrrr apan sath me dekh kitne acche lagte h motuu🧿❤️
+      </div>
+    </div>
+  </div>
+  <button onclick="next()">Next</button>
+</div>
+
+<!-- PHOTO 3 -->
+<div class="step">
+  <div class="photo-box" onclick="reveal(this)">
+    <div class="photo-inner">
+      <div class="photo-front">
+        <img src="https://i.postimg.cc/WbndcGsy/88152F36_A649_4E59_8F59_0ABFD3F6DD85.jpg">
+      </div>
+      <div class="photo-back">
+        meri motuu jitna koi sundar koi ho he nhi sakta h laddo 🙈🥰
+      </div>
+    </div>
+  </div>
+  <button onclick="next()">Next</button>
+</div>
+
+<!-- VALENTINE -->
+<div class="step">
+  <h2>Will you be my Valentine motuuu? 💍</h2>
+  <button onclick="yes()">HAA ❤️</button>
+  <button id="no" onmouseover="moveNo()">NHI 😠</button>
+</div>
+
+<!-- LETTER -->
+<div class="step" id="letterStep">
+  <div id="gift">🎁</div>
+  <div class="letter">
+    <p>
+      Motuuu meri jaan  ❤️,<br><br>
+      laado tu meri jaan h babyy tere bina kuch bhi nhi hu m babyyy matlab tu hai tu m hu babyy😘
+      meri laado ye mera sab kuch h 💕 meri jaan m bhut jadya pyaar kaarta hu yrr tere se 😭 teri
+      roj itni yaad aati h na kya batau babyyy🥹 aaj mil rahe the ye plan bhi khrab ho gya babyyy😭
+      but meri jaaan m hamesha tere se pyaar karuga dukh ho raha h plan khrab ho gya but koi na 
+      i love you soo much babyyyy💋💋
+    </p>
+    <img src="https://i.postimg.cc/qM0NFbH8/E5F3061B_D2FF_4287_97BA_EA2E544ABC21.jpg">
+  </div>
+</div>
+
+<script>
+let s=0;
+const steps=document.querySelectorAll(".step");
+const music=document.getElementById("bgm");
+const beat=document.getElementById("beat");
+
+/* START WITH SOFT FADE-IN */
+function startExperience(){
+  music.currentTime = 0;
+  music.volume = 0;
+  music.play();
+
+  let v = 0;
+  const fade = setInterval(()=>{
+    if(v >= 0.18){
+      clearInterval(fade);
+    } else {
+      v += 0.01;
+      music.volume = v;
+    }
+  },200);
+
+  next();
+}
+
+function next(){
+  steps[s].classList.remove("active");
+  s++;
+  steps[s].classList.add("active");
+}
+
+function reveal(box){
+  box.classList.toggle("show");
+  beat.currentTime=0;
+  beat.play();
+}
+
+function moveNo(){
+  const no=document.getElementById("no");
+  no.style.left=Math.random()*70+"vw";
+  no.style.top=Math.random()*70+"vh";
+
+  const angry=document.createElement("div");
+  angry.innerHTML="😤 Try Again!";
+  angry.style.position="fixed";
+  angry.style.left="50%";
+  angry.style.top="50%";
+  angry.style.fontSize="24px";
+  angry.style.animation="jump 0.8s";
+  document.body.appendChild(angry);
+  setTimeout(()=>angry.remove(),800);
+}
+
+function yes(){
+  steps[s].classList.remove("active");
+  document.getElementById("letterStep").classList.add("active");
+  const gift=document.getElementById("gift");
+  gift.style.display="block";
+  gift.classList.add("open");
+  music.volume = 0.12;   // extra soft on emotional letter
+  flowerRain();
+}
+
+function flowerRain(){
+  setInterval(()=>{
+    const f=document.createElement("div");
+    f.className="flower";
+    f.innerHTML="🌹";
+    f.style.left=Math.random()*100+"vw";
+    document.body.appendChild(f);
+    setTimeout(()=>f.remove(),5000);
+  },200);
+}
+
+/* HEARTS */
+setInterval(()=>{
+  const h=document.createElement("div");
+  h.className="heart";
+  h.innerHTML="❤️";
+  h.style.left=Math.random()*100+"vw";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),6000);
+},300);
+</script>
+
+</body>
+</html>
