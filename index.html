@@ -1,304 +1,1100 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title> </For Someone A Little Special...🌷 title>
+
+<title>For Someone A Little Special... 🌷</title>
 
 <style>
-body{
-  margin:0;
-  font-family:'Segoe UI',sans-serif;
-  background:linear-gradient(135deg,#ff6fa5,#ff9ec4);
-  color:#fff;
-  text-align:center;
-  overflow:hidden;
+
+/* =========================
+   BASIC
+========================= */
+
+*{
+    box-sizing:border-box;
 }
 
-/* STEPS */
+html,
+body{
+    margin:0;
+    padding:0;
+    width:100%;
+    height:100%;
+}
+
+body{
+    font-family:'Segoe UI',Arial,sans-serif;
+    background:linear-gradient(
+        135deg,
+        #ff6fa5,
+        #ff9ec4
+    );
+    color:white;
+    text-align:center;
+    overflow:hidden;
+}
+
+
+/* =========================
+   STEPS
+========================= */
+
 .step{
-  min-height:100vh;
-  display:none;
-  padding:40px 20px;
-  box-sizing:border-box;
-  animation:fade 1s ease;
+    width:100%;
+    min-height:100vh;
+
+    display:none;
+
+    padding:40px 20px;
+
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+
+    animation:fadeIn 1s ease;
 }
+
 .step.active{
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
+    display:flex;
 }
-@keyframes fade{
-  from{opacity:0;transform:translateY(30px);}
-  to{opacity:1;transform:translateY(0);}
+
+@keyframes fadeIn{
+
+    0%{
+        opacity:0;
+        transform:translateY(30px);
+    }
+
+    100%{
+        opacity:1;
+        transform:translateY(0);
+    }
+
 }
+
+
+/* =========================
+   HEADINGS
+========================= */
+
+h1,
+h2,
+h3{
+    margin:10px 0;
+}
+
+h2{
+    font-size:28px;
+}
+
+p{
+    font-size:17px;
+    line-height:1.6;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
 
 button{
-  margin-top:25px;
-  padding:14px 34px;
-  font-size:18px;
-  border:none;
-  border-radius:30px;
-  background:#fff;
-  color:#ff4d8d;
-  cursor:pointer;
+
+    margin-top:20px;
+
+    padding:14px 34px;
+
+    font-size:18px;
+
+    border:none;
+
+    border-radius:30px;
+
+    background:white;
+
+    color:#ff4d8d;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 8px 20px rgba(0,0,0,0.15);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+
 }
 
-/* HEARTS */
-.heart{
-  position:fixed;
-  bottom:-20px;
-  font-size:18px;
-  animation:float 6s linear infinite;
-}
-@keyframes float{
-  from{transform:translateY(0);opacity:1;}
-  to{transform:translateY(-120vh);opacity:0;}
+button:hover{
+
+    transform:scale(1.06);
+
+    box-shadow:
+        0 10px 25px rgba(0,0,0,0.2);
+
 }
 
-/* PHOTO FLIP */
-.photo-box{
-  width:280px;
-  height:360px;
-  perspective:1000px;
-  margin:20px 0;
-}
-.photo-inner{
-  width:100%;
-  height:100%;
-  position:relative;
-  transition:transform 0.8s;
-  transform-style:preserve-3d;
-}
-.photo-box.show .photo-inner{
-  transform:rotateY(180deg);
-}
-.photo-front,.photo-back{
-  position:absolute;
-  inset:0;
-  backface-visibility:hidden;
-  border-radius:20px;
-  overflow:hidden;
-}
-.photo-front img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-.photo-back{
-  background:rgba(255,77,141,0.95);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
-  font-size:16px;
-  line-height:1.6;
-  transform:rotateY(180deg);
+button:active{
+
+    transform:scale(0.95);
+
 }
 
-/* NO BUTTON */
+
+/* =========================
+   NO BUTTON
+========================= */
+
 #no{
-  position:absolute;
-  background:#ff2e63;
-  color:white;
+
+    position:absolute;
+
+    background:#ff2e63;
+
+    color:white;
+
+    z-index:20;
+
 }
 
-/* GIFT */
-#gift{
-  font-size:90px;
-  display:none;
-}
-.open{
-  animation:pop 1s ease;
-}
-@keyframes pop{
-  0%{transform:scale(0.5);}
-  60%{transform:scale(1.2);}
-  100%{transform:scale(1);}
+
+/* =========================
+   HEARTS
+========================= */
+
+.heart{
+
+    position:fixed;
+
+    bottom:-30px;
+
+    font-size:20px;
+
+    pointer-events:none;
+
+    z-index:2;
+
+    animation:
+        floatHeart 6s linear forwards;
+
 }
 
-/* FLOWERS */
+@keyframes floatHeart{
+
+    0%{
+
+        transform:
+            translateY(0)
+            scale(1)
+            rotate(0deg);
+
+        opacity:1;
+
+    }
+
+    100%{
+
+        transform:
+            translateY(-120vh)
+            scale(1.4)
+            rotate(20deg);
+
+        opacity:0;
+
+    }
+
+}
+
+
+/* =========================
+   FLOWERS
+========================= */
+
 .flower{
-  position:fixed;
-  top:-20px;
-  font-size:22px;
-  animation:fall 5s linear infinite;
-}
-@keyframes fall{
-  from{transform:translateY(0);opacity:1;}
-  to{transform:translateY(120vh);opacity:0;}
+
+    position:fixed;
+
+    top:-40px;
+
+    pointer-events:none;
+
+    z-index:3;
+
+    animation:
+        fallingFlower 5s linear forwards;
+
 }
 
-/* LETTER */
+@keyframes fallingFlower{
+
+    0%{
+
+        transform:
+            translateY(0)
+            rotate(0deg);
+
+        opacity:1;
+
+    }
+
+    100%{
+
+        transform:
+            translateY(120vh)
+            rotate(360deg);
+
+        opacity:0;
+
+    }
+
+}
+
+
+/* =========================
+   GIFT
+========================= */
+
+#gift{
+
+    display:none;
+
+    font-size:90px;
+
+    margin-bottom:15px;
+
+}
+
+.gift-open{
+
+    animation:
+        giftPop 1s ease;
+
+}
+
+@keyframes giftPop{
+
+    0%{
+
+        transform:scale(0.4);
+
+    }
+
+    50%{
+
+        transform:scale(1.25);
+
+    }
+
+    75%{
+
+        transform:scale(0.95);
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+    }
+
+}
+
+
+/* =========================
+   LETTER
+========================= */
+
 .letter{
-  background:#fff;
-  color:#000;
-  border-radius:18px;
-  padding:22px;
-  width:300px;
-}
-.letter img{
-  width:100%;
-  border-radius:14px;
-  margin-top:15px;
+
+    width:90%;
+
+    max-width:420px;
+
+    max-height:72vh;
+
+    overflow-y:auto;
+
+    background:white;
+
+    color:#222;
+
+    padding:25px;
+
+    border-radius:20px;
+
+    text-align:left;
+
+    box-shadow:
+        0 15px 40px
+        rgba(0,0,0,0.25);
+
+    animation:
+        letterAppear 1s ease;
+
 }
 
-/* ANGRY JUMP */
-@keyframes jump{
-  0%{transform:translate(-50%,-50%) scale(0.5);}
-  50%{transform:translate(-50%,-60%) scale(1.2);}
-  100%{transform:translate(-50%,-50%) scale(1);}
+@keyframes letterAppear{
+
+    0%{
+
+        opacity:0;
+
+        transform:
+            translateY(30px)
+            scale(0.95);
+
+    }
+
+    100%{
+
+        opacity:1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+
 }
+
+.letter p{
+
+    margin:0;
+
+    font-size:16px;
+
+    line-height:1.65;
+
+}
+
+
+/* =========================
+   TRY AGAIN
+========================= */
+
+.angry-message{
+
+    position:fixed;
+
+    left:50%;
+
+    top:50%;
+
+    transform:
+        translate(-50%,-50%);
+
+    font-size:25px;
+
+    font-weight:bold;
+
+    z-index:999;
+
+    pointer-events:none;
+
+    animation:
+        angryJump 0.8s ease forwards;
+
+}
+
+@keyframes angryJump{
+
+    0%{
+
+        transform:
+            translate(-50%,-50%)
+            scale(0.4);
+
+        opacity:0;
+
+    }
+
+    50%{
+
+        transform:
+            translate(-50%,-65%)
+            scale(1.2);
+
+        opacity:1;
+
+    }
+
+    100%{
+
+        transform:
+            translate(-50%,-50%)
+            scale(1);
+
+        opacity:0;
+
+    }
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:500px){
+
+    h2{
+
+        font-size:25px;
+
+    }
+
+    p{
+
+        font-size:16px;
+
+    }
+
+    button{
+
+        font-size:17px;
+
+        padding:
+            13px 30px;
+
+    }
+
+    .letter{
+
+        padding:21px;
+
+    }
+
+}
+
 </style>
+
 </head>
+
 
 <body>
 
-<!-- BACKGROUND MUSIC -->
-<audio id="bgm" loop preload="auto">
-  <source src="https://www.image2url.com/r2/default/audio/1784962004872-c9043e0b-f930-4d33-8672-58502593ecda.mp3" type="audio/mpeg">
+
+<!-- ==================================================
+     BACKGROUND MUSIC
+================================================== -->
+
+<audio
+    id="bgm"
+    loop
+    preload="auto"
+>
+
+    <source
+        src="https://www.image2url.com/r2/default/audio/1784962004872-c9043e0b-f930-4d33-8672-58502593ecda.mp3"
+        type="audio/mpeg"
+    >
+
 </audio>
 
-<!-- HEARTBEAT -->
-<audio id="beat" preload="auto">
-  <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_3c77d1f0e3.mp3">
+
+<!-- ==================================================
+     HEARTBEAT SOUND
+================================================== -->
+
+<audio
+    id="beat"
+    preload="auto"
+>
+
+    <source
+        src="https://cdn.pixabay.com/audio/2022/03/15/audio_3c77d1f0e3.mp3"
+        type="audio/mpeg"
+    >
+
 </audio>
 
-<!-- STEP 1 -->
-<div class="step active">
-  <h2>WAIT KARO  ❤️</h2>
-  <p>SURPRISE HAI YRR CLICK KARO</p>
-  <button onclick="startExperience()">Start 🎶</button>
-</div>
 
-<!-- VALENTINE -->
-<div class="step">
-  <h2>WILL YOU STAY A LITTLE LONGER? 🌸</h2>
-  <button onclick="yes()">HAA ❤️</button>
-  <button id="no" onmouseover="moveNo()">NHI 😠</button>
-</div>
+<!-- ==================================================
+     STEP 1
+================================================== -->
 
-<!-- LETTER -->
-<div class="step" id="letterStep">
-  <div id="gift">🎁</div>
-  <div class="letter">
+<section class="step active">
+
+    <h2>
+        WAIT KARO ❤️
+    </h2>
+
     <p>
-     Heyy… 👀
-
-Actually, I made this site as a little experiment 😂
-Just wanted to see if a proposal like this would actually work on a girl or not 😭😂 ,<br><br>
-    So I had to write a little letter too…
-and while writing it, I don’t know why, but one particular person kept coming to my mind 😅
-
-I’m not gonna tell you who…
-otherwise the whole point of the experiment would be ruined 😂🌸
-
-All I can say is that talking to that person feels really nice…
-maybe a little more than it should. 🙃
-
-So the proposal would go something like this—
-
-“Would you let someone stay in your life a little longer than they’re supposed to? 🌷”
-
-Anyway…
-if someone reading this is thinking,
-“Hmm… who is this actually about?” 👀
-
-Let’s just say…
-maybe you already know the answer. 😌
-      
-      
-      
-    
-
-     
-      
+        SURPRISE HAI YRR 😭
+        <br>
+        CLICK KARO 👀
     </p>
+
+    <button
+        onclick="startExperience()"
+    >
+        Start 🎶
+    </button>
+
+</section>
+
+
+<!-- ==================================================
+     STEP 2
+================================================== -->
+
+<section class="step">
+
+    <h2>
+        WILL YOU STAY A LITTLE LONGER? 🌸
+    </h2>
+
+    <button
+        onclick="yes()"
+    >
+        HAA ❤️
+    </button>
+
+    <button
+        id="no"
+        onmouseover="moveNo()"
+        ontouchstart="moveNo()"
+    >
+        NHI 😠
+    </button>
+
+</section>
+
+
+<!-- ==================================================
+     STEP 3
+================================================== -->
+
+<section
+    class="step"
+    id="letterStep"
+>
+
+    <!-- GIFT -->
+
+    <div id="gift">
+        🎁
+    </div>
+
+
+    <!-- LETTER -->
+
+    <div class="letter">
+
+        <p>
+
+            Heyy… 👀
+
+            <br>
+            <br>
+
+            Actually, I made this site as a little
+            experiment 😂
+
+            <br>
+
+            Just wanted to see if a proposal like this
+            would actually work on a girl or not 😭😂
+
+            <br>
+            <br>
+
+            So I had to write a little letter too…
+
+            <br>
+
+            and while writing it, I don’t know why,
+            but one particular person kept coming to
+            my mind 😅
+
+            <br>
+            <br>
+
+            I’m not gonna tell you who…
+
+            <br>
+
+            otherwise the whole point of the experiment
+            would be ruined 😂🌸
+
+            <br>
+            <br>
+
+            All I can say is that talking to that person
+            feels really nice…
+
+            <br>
+
+            maybe a little more than it should. 🙃
+
+            <br>
+            <br>
+
+            So the proposal would go something like this—
+
+            <br>
+            <br>
+
+            <strong>
+                “Would you let someone stay in your life
+                a little longer than they’re supposed to? 🌷”
+            </strong>
+
+            <br>
+            <br>
+
+            Anyway…
+
+            <br>
+
+            if someone reading this is thinking,
+
+            <br>
+            <br>
+
+            <em>
+                “Hmm… who is this actually about?” 👀
+            </em>
+
+            <br>
+            <br>
+
+            Let’s just say…
+
+            <br>
+            <br>
+
+            <strong>
+                maybe you already know the answer. 😌
+            </strong>
+
+            <br>
+            <br>
+
+            🌸 ❤️ 🌷
+
+        </p>
+
+    </div>
+
+</section>
+
+
+
 <script>
-let s=0;
-const steps=document.querySelectorAll(".step");
-const music=document.getElementById("bgm");
-const beat=document.getElementById("beat");
 
-/* START WITH SOFT FADE-IN */
+/* ==================================================
+   VARIABLES
+================================================== */
+
+let currentStep = 0;
+
+const steps =
+    document.querySelectorAll(".step");
+
+const music =
+    document.getElementById("bgm");
+
+const beat =
+    document.getElementById("beat");
+
+
+/* ==================================================
+   START EXPERIENCE
+================================================== */
+
 function startExperience(){
-  music.currentTime = 0;
-  music.volume = 0;
-  music.play();
 
-  let v = 0;
-  const fade = setInterval(()=>{
-    if(v >= 0.18){
-      clearInterval(fade);
-    } else {
-      v += 0.01;
-      music.volume = v;
+    /* Start music */
+
+    music.currentTime = 0;
+
+    music.volume = 0;
+
+    const musicPromise =
+        music.play();
+
+    if(musicPromise !== undefined){
+
+        musicPromise.catch(function(error){
+
+            console.log(
+                "Music could not start:",
+                error
+            );
+
+        });
+
     }
-  },200);
 
-  next();
+
+    /* Smooth music fade */
+
+    let volume = 0;
+
+    const fade =
+        setInterval(function(){
+
+            volume += 0.01;
+
+            if(volume >= 0.18){
+
+                volume = 0.18;
+
+                clearInterval(fade);
+
+            }
+
+            music.volume = volume;
+
+        },150);
+
+
+    /* Go to next screen */
+
+    nextStep();
+
 }
 
-function next(){
-  steps[s].classList.remove("active");
-  s++;
-  steps[s].classList.add("active");
+
+/* ==================================================
+   NEXT STEP
+================================================== */
+
+function nextStep(){
+
+    if(
+        currentStep <
+        steps.length - 1
+    ){
+
+        steps[
+            currentStep
+        ].classList.remove("active");
+
+
+        currentStep++;
+
+
+        steps[
+            currentStep
+        ].classList.add("active");
+
+    }
+
 }
 
-function reveal(box){
-  box.classList.toggle("show");
-  beat.currentTime=0;
-  beat.play();
-}
 
-function moveNo(){
-  const no=document.getElementById("no");
-  no.style.left=Math.random()*70+"vw";
-  no.style.top=Math.random()*70+"vh";
-
-  const angry=document.createElement("div");
-  angry.innerHTML="😤 Try Again!";
-  angry.style.position="fixed";
-  angry.style.left="50%";
-  angry.style.top="50%";
-  angry.style.fontSize="24px";
-  angry.style.animation="jump 0.8s";
-  document.body.appendChild(angry);
-  setTimeout(()=>angry.remove(),800);
-}
+/* ==================================================
+   YES
+================================================== */
 
 function yes(){
-  steps[s].classList.remove("active");
-  document.getElementById("letterStep").classList.add("active");
-  const gift=document.getElementById("gift");
-  gift.style.display="block";
-  gift.classList.add("open");
-  music.volume = 0.12;   // extra soft on emotional letter
-  flowerRain();
+
+    /* Hide current screen */
+
+    steps[
+        currentStep
+    ].classList.remove("active");
+
+
+    /* Show letter */
+
+    document
+        .getElementById("letterStep")
+        .classList.add("active");
+
+
+    /* Gift */
+
+    const gift =
+        document.getElementById("gift");
+
+    gift.style.display = "block";
+
+
+    /* Restart animation */
+
+    gift.classList.remove(
+        "gift-open"
+    );
+
+    void gift.offsetWidth;
+
+    gift.classList.add(
+        "gift-open"
+    );
+
+
+    /* Make music softer */
+
+    music.volume = 0.12;
+
+
+    /* Start flowers */
+
+    startFlowerRain();
+
 }
 
-function flowerRain(){
-  setInterval(()=>{
-    const f=document.createElement("div");
-    f.className="flower";
-    f.innerHTML="🌹";
-    f.style.left=Math.random()*100+"vw";
-    document.body.appendChild(f);
-    setTimeout(()=>f.remove(),5000);
-  },200);
+
+/* ==================================================
+   NO BUTTON
+================================================== */
+
+function moveNo(){
+
+    const no =
+        document.getElementById("no");
+
+
+    /* Screen dimensions */
+
+    const screenWidth =
+        window.innerWidth;
+
+    const screenHeight =
+        window.innerHeight;
+
+
+    /* Button dimensions */
+
+    const buttonWidth =
+        no.offsetWidth;
+
+    const buttonHeight =
+        no.offsetHeight;
+
+
+    /* Safe area */
+
+    const maxLeft =
+        screenWidth -
+        buttonWidth -
+        20;
+
+    const maxTop =
+        screenHeight -
+        buttonHeight -
+        20;
+
+
+    /* Random position */
+
+    const randomLeft =
+        Math.random() *
+        Math.max(maxLeft,20);
+
+
+    const randomTop =
+        Math.random() *
+        Math.max(maxTop,20);
+
+
+    no.style.left =
+        randomLeft + "px";
+
+    no.style.top =
+        randomTop + "px";
+
+
+    /* Try Again */
+
+    const angry =
+        document.createElement("div");
+
+    angry.className =
+        "angry-message";
+
+    angry.innerHTML =
+        "😤 Try Again!";
+
+
+    document.body.appendChild(
+        angry
+    );
+
+
+    /* Remove */
+
+    setTimeout(
+        function(){
+
+            angry.remove();
+
+        },
+        800
+    );
+
 }
 
-/* HEARTS */
-setInterval(()=>{
-  const h=document.createElement("div");
-  h.className="heart";
-  h.innerHTML="❤️";
-  h.style.left=Math.random()*100+"vw";
-  document.body.appendChild(h);
-  setTimeout(()=>h.remove(),6000);
-},300);
+
+/* ==================================================
+   FLOWER RAIN
+================================================== */
+
+let flowerRainStarted = false;
+
+function startFlowerRain(){
+
+    if(flowerRainStarted){
+
+        return;
+
+    }
+
+    flowerRainStarted = true;
+
+
+    setInterval(
+
+        function(){
+
+            const flower =
+                document.createElement("div");
+
+
+            flower.className =
+                "flower";
+
+
+            flower.innerHTML =
+                "🌹";
+
+
+            flower.style.left =
+                Math.random() *
+                100 +
+                "vw";
+
+
+            flower.style.fontSize =
+                (
+                    18 +
+                    Math.random() * 15
+                ) +
+                "px";
+
+
+            flower.style.animationDuration =
+                (
+                    4 +
+                    Math.random() * 3
+                ) +
+                "s";
+
+
+            document.body.appendChild(
+                flower
+            );
+
+
+            /* Remove after animation */
+
+            setTimeout(
+
+                function(){
+
+                    flower.remove();
+
+                },
+
+                7000
+
+            );
+
+        },
+
+        250
+
+    );
+
+}
+
+
+/* ==================================================
+   FLOATING HEARTS
+================================================== */
+
+setInterval(
+
+    function(){
+
+        const heart =
+            document.createElement("div");
+
+
+        heart.className =
+            "heart";
+
+
+        heart.innerHTML =
+            "❤️";
+
+
+        heart.style.left =
+            Math.random() *
+            100 +
+            "vw";
+
+
+        heart.style.fontSize =
+            (
+                15 +
+                Math.random() * 15
+            ) +
+            "px";
+
+
+        heart.style.animationDuration =
+            (
+                5 +
+                Math.random() * 3
+            ) +
+            "s";
+
+
+        document.body.appendChild(
+            heart
+        );
+
+
+        setTimeout(
+
+            function(){
+
+                heart.remove();
+
+            },
+
+            8000
+
+        );
+
+    },
+
+    350
+
+);
+
+
+/* ==================================================
+   PREVENT ACCIDENTAL AUDIO ERROR
+================================================== */
+
+beat.volume = 0.5;
+
+
+/* ==================================================
+   END
+================================================== */
+
 </script>
 
+
 </body>
+
 </html>
